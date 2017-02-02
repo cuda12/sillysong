@@ -28,11 +28,6 @@ class ViewController: UIViewController {
         nameField.delegate = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     @IBAction func reset(_ sender: Any) {
         nameField.text = ""
         lyricsView.text = ""
@@ -66,9 +61,12 @@ func shortNameForName(name: String) -> String {
             flagVowel = true
         }
     }
-    return short_name
+    if flagVowel {
+        return short_name
+    } else {
+        return name_lower
+    }
 }
-
 
 func lyricsForName(lyricsTemplate: String, fullName: String) -> String {
     let shortName = shortNameForName(name: fullName)
